@@ -2,6 +2,7 @@ import { CanActivate, ExecutionContext, Inject } from '@nestjs/common';
 import { map, Observable, tap } from 'rxjs';
 import { AUTH_SERVICE } from '../constants/services';
 import { ClientProxy } from '@nestjs/microservices';
+import { UserDto } from '../dto';
 
 export class JwtAuthGuard implements CanActivate {
   constructor(@Inject(AUTH_SERVICE) private readonly authClient: ClientProxy) {}
@@ -17,13 +18,13 @@ export class JwtAuthGuard implements CanActivate {
     }
 
     return this.authClient
-      .send('authenticate', {
+      .send<UserDto>('authenticate', {
         Authentication: jwt,
       })
       .pipe(
         // eslint-disable-next-line prettier/prettier
         tap(res => {
-          context.switchToHttp().getRequest<{ user: unknown }>().user = res;
+          context.switchToHttp().getRequest<{ user: UserDto }>().user = res;
         }),
         map(() => true),
       );

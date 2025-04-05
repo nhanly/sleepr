@@ -24,8 +24,8 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @MessagePattern('authenticate')
-  authenticate(@Payload() data: any) {
+  authenticate(@Payload() data: { user: UsersDocument }) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return data;
+    return data.user;
   }
 }
