@@ -1,0 +1,69 @@
+steps:
+  # reservations
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'australia-southeast2-docker.pkg.dev/copper-booster-374803/reservations/production',
+        '-f',
+        '/app/reservations/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'australia-southeast2-docker.pkg.dev/copper-booster-374803/reservations/production',
+      ]
+  # auth
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'australia-southeast2-docker.pkg.dev/copper-booster-374803/auth/production',
+        '-f',
+        '/app/auth/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'australia-southeast2-docker.pkg.dev/copper-booster-374803/auth/production',
+      ]
+  # notifications
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'australia-southeast2-docker.pkg.dev/copper-booster-374803/notifications/production',
+        '-f',
+        '/app/notifications/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'australia-southeast2-docker.pkg.dev/copper-booster-374803/notifications/production',
+      ]
+  # payments
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'australia-southeast2-docker.pkg.dev/copper-booster-374803/payments/production',
+        '-f',
+        '/app/payments/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'australia-southeast2-docker.pkg.dev/copper-booster-374803/payments/production',
+      ]

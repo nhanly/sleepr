@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
+import { UsersDocument } from '@app/common';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { UsersDocument } from './users/models/users.schema';
 import { Response } from 'express';
 
 @Injectable()

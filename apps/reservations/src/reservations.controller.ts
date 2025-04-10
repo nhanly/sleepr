@@ -13,7 +13,6 @@ import { CreateReservationDto } from './dto/create-reservation.dto';
 import { UpdateReservationDto } from './dto/update-reservation.dto';
 import { CurrentUser, JwtAuthGuard, UserDto } from '@app/common';
 
-@UseGuards(JwtAuthGuard)
 @Controller('reservations')
 export class ReservationsController {
   constructor(private readonly reservationsService: ReservationsService) {}
@@ -24,14 +23,16 @@ export class ReservationsController {
     @Body() createReservationDto: CreateReservationDto,
     @CurrentUser() user: UserDto,
   ) {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
     const _user = await this.reservationsService.create(
       createReservationDto,
-      user._id,
+      user,
     );
 
     return _user;
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.reservationsService.findAll();
