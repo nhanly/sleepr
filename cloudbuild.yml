@@ -1,4 +1,5 @@
 steps:
+  # build the app
   # reservations
   - name: 'gcr.io/cloud-builders/docker'
     args:
@@ -67,3 +68,6 @@ steps:
         'push',
         'australia-southeast2-docker.pkg.dev/copper-booster-374803/payments/production',
       ]
+serviceAccount: 'projects/copper-booster-374803/serviceAccounts/131655006502-compute@developer.gserviceaccount.com'
+options:
+  logging: GCS_ONLY
