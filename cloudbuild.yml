@@ -8,7 +8,7 @@ steps:
         '-t',
         'australia-southeast2-docker.pkg.dev/copper-booster-374803/reservations/production',
         '-f',
-        '/apps/reservations/Dockerfile',
+        'apps/reservations/Dockerfile',
         '.',
       ]
   - name: 'gcr.io/cloud-builders/docker'
@@ -25,7 +25,7 @@ steps:
         '-t',
         'australia-southeast2-docker.pkg.dev/copper-booster-374803/auth/production',
         '-f',
-        '/apps/auth/Dockerfile',
+        'apps/auth/Dockerfile',
         '.',
       ]
   - name: 'gcr.io/cloud-builders/docker'
@@ -42,7 +42,7 @@ steps:
         '-t',
         'australia-southeast2-docker.pkg.dev/copper-booster-374803/notifications/production',
         '-f',
-        '/apps/notifications/Dockerfile',
+        'apps/notifications/Dockerfile',
         '.',
       ]
   - name: 'gcr.io/cloud-builders/docker'
@@ -59,7 +59,7 @@ steps:
         '-t',
         'australia-southeast2-docker.pkg.dev/copper-booster-374803/payments/production',
         '-f',
-        '/apps/payments/Dockerfile',
+        'apps/payments/Dockerfile',
         '.',
       ]
   - name: 'gcr.io/cloud-builders/docker'
