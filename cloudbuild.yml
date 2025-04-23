@@ -70,4 +70,4 @@ steps:
       ]
 serviceAccount: 'projects/copper-booster-374803/serviceAccounts/131655006502-compute@developer.gserviceaccount.com'
 options:
-  logging: GCS_ONLY
+  logging: CLOUD_LOGGING_ONLY
